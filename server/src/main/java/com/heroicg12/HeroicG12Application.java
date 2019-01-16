@@ -23,4 +23,3 @@ class Hello {
       return "Shit";
     }
 }
-

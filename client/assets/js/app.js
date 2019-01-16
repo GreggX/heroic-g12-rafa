@@ -6,13 +6,10 @@ function requestHttp () {
   var xhr = new XMLHttpRequest();
 
   xhr.open('GET', urlVal);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-
 
   xhr.onload = (e) => {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-
         let data = JSON.parse(xhr.responseText);
         console.log(data);
       } else {
