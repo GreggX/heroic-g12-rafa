@@ -9,35 +9,46 @@ services:
       - "8080:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./client/dist:/var/www/heroic-g12
+      - ./client:/var/www/heroic-g12
     depends_on:
       - config-server
 
+  # config-server:
+  #   container_name: java-server-g12-rafa
+  #   image: maven:3.6-jdk-8
+  #   ports:
+  #     - "8888:8888"
+  #   volumes:
+  #     - ./server:/var/www/heroic-g12
+  #     - ./scripts:/usr/local/scripts
+  #   command: bash /usr/local/scripts/run-spring-boot.sh
+  #   networks:
+  #     - gov-app
   config-server:
-    container_name: java-server-g12-rafa
-    image: maven:3.6-jdk-8
+    container_name: node-test-no-cors-8.12.0
+    image: node:8.12.0
     ports:
-      - "8888:88"
-    volumes:
-      - ./server:/var/www/heroic-g12
+      - "3000:3001"
+    volumes: 
+      - ./node:/var/www/heroic-g12
       - ./scripts:/usr/local/scripts
     command: bash /usr/local/scripts/run-spring-boot.sh
-    networks:
+    networks: 
       - gov-app
-  db:
-    container_name: db-heroic-g12-mysql
-    image: mysql:5.7
-    volumes:
-      - ./mysql:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_USER: "root"
-      MYSQL_PASSWORD: "root"
-      MYSQL_SCHEMA: "heroic-g12"
-    networks:
-      - gov-app
+  # db:
+  #   container_name: db-heroic-g12-mysql
+  #   image: mysql:5.7
+  #   volumes:
+  #     - ./mysql:/var/lib/mysql
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "root"
+  #     MYSQL_USER: "root"
+  #     MYSQL_PASSWORD: "root"
+  #     MYSQL_SCHEMA: "heroic-g12"
+  #   networks:
+  #     - gov-app
 
 networks:
   gov-app:
