@@ -4,24 +4,25 @@ function requestHttp () {
 	let urlVal = url.value;
 
 	var xhr = new XMLHttpRequest();
-	// xhr.withCredentials = true;
 
 	xhr.open('GET', urlVal);
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	xhr.setRequestHeader('cache-control', 'no-cache');
+	// xhr.setRequestHeader('Content-Type', 'application/json');
+
 
 	xhr.onload = (e) => {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
-				console.log('Some');
+
+				let data = JSON.parse(xhr.responseText);
+				console.log(data);
 			} else {
-				console.log('Error');
+				console.log('Error code');
 			}
 		}
 	}
 
 	xhr.onerror = (e) => {
-		console.log('Error');
+		console.log('Error fetch');
 	}
 
 	xhr.send();
