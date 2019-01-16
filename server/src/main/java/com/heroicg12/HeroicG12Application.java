@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 
 @SpringBootApplication
 public class HeroicG12Application {
@@ -12,11 +13,14 @@ public class HeroicG12Application {
 	public static void main(String[] args) {
 		SpringApplication.run(HeroicG12Application.class, args);
 	}
+}
 
-	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<String> getById(@PathVariable String id) {
-		return new ResponseEntity<String> ("GET Response: " + id, HttpStatus.OK);
-	}
+@RestController
+class Hello {
 
+    @RequestMapping("/shit/{name}")
+    public String homeInit(Model model) {
+      return "Shit";
+    }
 }
 
