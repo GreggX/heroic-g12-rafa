@@ -25,20 +25,20 @@ services:
     networks:
       - gov-app
 
-  # db:
-  #   container_name: db-heroic-g12-mysql
-  #   image: mysql:5.7
-  #   volumes:
-  #     - ./mysql:/var/lib/mysql
-  #   ports:
-  #     - "3306:3306"
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: "root"
-  #     MYSQL_USER: "root"
-  #     MYSQL_PASSWORD: "root"
-  #     MYSQL_SCHEMA: "heroic-g12"
-  #   networks:
-  #     - gov-app
+  db:
+    container_name: db-heroic-g12-mysql
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_SCHEMA: "heroicg12"
+    networks:
+      - gov-app
 
 networks:
   gov-app:
